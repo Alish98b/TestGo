@@ -17,6 +17,6 @@ func (s *RoomService) GetRoomById(id int) (models.Room, error) {
 	return s.storage.GetRoomById(id)
 }
 
-func (s *RoomService) CreateRoom(room models.Room) (int, string) {
-	return s.storage.CreateRoom(room)
+func (s *RoomService) CreateFilm(film models.Film) (int, string) {
+	return s.storage.CreateRoom(film)
 }
