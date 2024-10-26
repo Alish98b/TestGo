@@ -26,7 +26,7 @@ func (h *Handler) GetRoomById(c *gin.Context) {
 }
 
 func (h *Handler) CreateRoom(c *gin.Context) {
-	var input models.Room
+	var input models.Film
 
 	if err := c.BindJSON(&input); err != nil {
 		newErrorResponse(c, http.StatusBadRequest, err.Error())
