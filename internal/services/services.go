@@ -5,17 +5,16 @@ import (
 	"hotel/internal/repositories"
 )
 
-type Room interface {
-	GetRoomById(id int) (models.Room, error)
-	CreateRoom(room models.Room) (int, string)
+type Film interface {
+	CreateFilm(film models.Film) (int, string)
 }
 
 type Service struct {
-	Room
+	Film
 }
 
 func NewServices(str *repositories.Storage) *Service {
 	return &Service{
-		Room: NewRoomService(str),
+		Film: NewFilmService(str),
 	}
 }
