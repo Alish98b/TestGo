@@ -43,6 +43,7 @@ func (s *Storage) UpdateFilm(film models.Film) (interface{}, string) { //пок�
 	} else {
 		err := "Room id not found"
 		return nil, err
+		//sefsefes
 	}
 }
 
