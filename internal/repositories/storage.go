@@ -2,64 +2,65 @@ package repositories
 
 import (
 	"hotel/internal/models"
+	"time"
 )
 
 type Storage struct {
-	Rooms map[int]models.Room
+	Films map[int]models.Film
 }
 
 func NewStorage() *Storage {
-	rooms := make(map[int]models.Room)
-	rooms[1] = models.Room{1, "100", "Single", "ASDASDASDAS"}
+	films := make(map[int]models.Film)
+	films[1] = models.Film{1,
+		"Теперь Эдди и Веном в бегах. Преследуемые обоими мирами и приближающейся сетью, Эдди и Веном вынуждены принять роковое решение, которое опустит занавес на их последнем танце.",
+		"Venom: The Last Dance",
+		"триллер, экшн",
+		time.Date(2024, time.October, 24, 0, 0, 0, 0, time.UTC)}
 	return &Storage{
-		Rooms: rooms,
+		Films: films,
 	}
 }
 
-func (s *Storage) GetRoomById(id int) (models.Room, error) {
+func (s *Storage) GetFilmById(id int) (models.Film, error) {
 	//Если нет ключа в мап, то будет возвращен нулевое значение. Это у нас пустая структура Room
-	return s.Rooms[id], nil
+	return s.Films[id], nil
 }
 
-func (s *Storage) CreateRoom(room models.Room) (int, string) { //пока возвращаем стринг так как мы сами создаем ошибку и отправляем ввиду строки
-	if _, exist := s.Rooms[room.Id]; exist {
+func (s *Storage) CreateFilm(film models.Film) (int, string) { //пока возвращаем стринг так как мы сами создаем ошибку и отправляем ввиду строки
+	if _, exist := s.Films[film.Id]; exist {
 		err := "Can not create room, room already exist"
 		return 0, err
 	}
 
-	s.Rooms[room.Id] = room
-	return room.Id, ""
+	s.Films[film.Id] = film
+	return film.Id, ""
 }
 
-func (s *Storage) UpdateRoom(room models.Room) (interface{}, string) { //пока возвращаем стринг так как мы сами создаем ошибку и отправляем ввиду строки
-	if _, exist := s.Rooms[room.Id]; exist {
-		if room.Type == "" || room.Number == "" {
-			err := "Required string is null"
-			return nil, err
-		}
-		s.Rooms[room.Id] = room
-		return s.Rooms[room.Id], ""
+func (s *Storage) UpdateFilm(film models.Film) (interface{}, string) { //пока возвращаем стринг так как мы сами создаем ошибку и отправляем ввиду строки
+	if _, exist := s.Films[film.Id]; exist {
+		s.Films[film.Id] = film
+		return s.Films[film.Id], ""
 	} else {
 		err := "Room id not found"
 		return nil, err
 	}
 }
 
-func (s *Storage) GetAllRooms() []models.Room {
-	var rooms []models.Room
-	for _, room := range s.Rooms {
-		rooms = append(rooms, room)
+func (s *Storage) GetAllFilms() interface{} {
+	var films []models.Film
+	for _, room := range s.Films {
+		films = append(films, room)
 	}
 
-	return rooms
+	return films
 }
 
-func (s *Storage) DeleteRoom(id int) (int, string) {
-	if _, exist := s.Rooms[id]; exist {
+func (s *Storage) DeleteFilm(id int) (int, string) {
+	if _, exist := s.Films[id]; exist {
 		err := "Can not delete room, room does not exist"
 		return 0, err
 	}
 
-	delete(s.Rooms, id)
+	delete(s.Films, id)
 	return id, ""
 }

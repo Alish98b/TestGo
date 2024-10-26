@@ -8,7 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func (h *Handler) GetRoomById(c *gin.Context) {
+func (h *Handler) GetFilmById(c *gin.Context) {
 
 	id, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
@@ -16,16 +16,16 @@ func (h *Handler) GetRoomById(c *gin.Context) {
 		return
 	}
 
-	room, err := h.services.GetRoomById(id)
+	film, err := h.services.GetFilmById(id)
 	if err != nil {
 		newErrorResponse(c, http.StatusInternalServerError, err.Error())
 		return
 	}
 
-	c.JSON(http.StatusOK, room)
+	c.JSON(http.StatusOK, film)
 }
 
-func (h *Handler) CreateRoom(c *gin.Context) {
+func (h *Handler) CreateFilm(c *gin.Context) {
 	var input models.Film
 
 	if err := c.BindJSON(&input); err != nil {
@@ -33,7 +33,7 @@ func (h *Handler) CreateRoom(c *gin.Context) {
 		return
 	}
 
-	id, err := h.services.CreateRoom(input)
+	id, err := h.services.CreateFilm(input)
 	if err != "" {
 		newErrorResponse(c, http.StatusInternalServerError, err)
 		return
@@ -44,10 +44,44 @@ func (h *Handler) CreateRoom(c *gin.Context) {
 	})
 }
 
-func (h *Handler) GetAllRooms(c *gin.Context) {
+func (h *Handler) GetAllFilms(c *gin.Context) {
 
+	films := h.services.GetAllFilms()
+	c.JSON(http.StatusOK, films)
 }
 
-func (h *Handler) DeleteRoom(c *gin.Context) {
+func (h *Handler) DeleteFilm(c *gin.Context) {
+	var input models.Film
 
+	if err := c.BindJSON(&input); err != nil {
+		newErrorResponse(c, http.StatusBadRequest, err.Error())
+		return
+	}
+
+	id, err := h.services.CreateFilm(input)
+	if err != "" {
+		newErrorResponse(c, http.StatusInternalServerError, err)
+		return
+	}
+
+	c.JSON(http.StatusOK, map[string]interface{}{
+		"id": id,
+	})
+}
+
+func (h *Handler) UpdateFilm(c *gin.Context) {
+	var input models.Film
+
+	if err := c.BindJSON(&input); err != nil {
+		newErrorResponse(c, http.StatusBadRequest, err.Error())
+		return
+	}
+
+	upFilm, err := h.services.UpdateFilm(input)
+	if err != "" {
+		newErrorResponse(c, http.StatusInternalServerError, err)
+		return
+	}
+
+	c.JSON(http.StatusOK, upFilm)
 }

@@ -5,18 +5,30 @@ import (
 	"hotel/internal/repositories"
 )
 
-type RoomService struct {
+type FilmService struct {
 	storage *repositories.Storage
 }
 
-func NewRoomService(str *repositories.Storage) *RoomService {
-	return &RoomService{storage: str}
+func NewFilmService(str *repositories.Storage) *FilmService {
+	return &FilmService{storage: str}
 }
 
-func (s *RoomService) GetRoomById(id int) (models.Room, error) {
-	return s.storage.GetRoomById(id)
+func (s *FilmService) GetFilmById(id int) (models.Film, error) {
+	return s.storage.GetFilmById(id)
 }
 
-func (s *RoomService) CreateFilm(film models.Film) (int, string) {
-	return s.storage.CreateRoom(film)
+func (s *FilmService) CreateFilm(film models.Film) (int, string) {
+	return s.storage.CreateFilm(film)
+}
+
+func (s *FilmService) DeleteFilm(id int) (int, string) {
+	return s.storage.DeleteFilm(id)
+}
+
+func (s *FilmService) UpdateFilm(film models.Film) (interface{}, string) {
+	return s.storage.UpdateFilm(film)
+}
+
+func (s *FilmService) GetAllFilms() interface{} {
+	return s.storage.GetAllFilms()
 }

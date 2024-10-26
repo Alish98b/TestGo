@@ -23,10 +23,13 @@ func (h *Handler) InitRoutes() *gin.Engine {
 	router.Use(gin.Logger())
 	router.Use(gin.Recovery())
 
-	room := router.Group("/room")
+	room := router.Group("/film")
 	{
-		room.GET("/:id", h.GetRoomById)
-		room.POST("/", h.CreateRoom)
+		room.GET("/:id", h.GetFilmById)
+		room.POST("/", h.CreateFilm)
+		room.PUT("/:id", h.UpdateFilm)
+		room.GET("/", h.GetAllFilms)
+		room.DELETE("/:id", h.DeleteFilm)
 	}
 
 	return router
