@@ -10,7 +10,7 @@ type Storage struct {
 
 func NewStorage() *Storage {
 	films := make(map[int]models.Film)
-	films[1] = models.Film{Id: 1, Description: "100", Details: "Single", Genre: "ASDASDASDAS"}
+	//films[1] = models.Film{Id: 1, Description: "100", Details: "Single", Genre: "ASDASDASDAS", Year: time.Time{}}
 	return &Storage{
 		Films: films,
 	}
@@ -21,7 +21,6 @@ func (s *Storage) CreateFilm(film models.Film) (int, string) { //пока воз
 		err := "Can not create film, film already exist"
 		return 0, err
 	}
-
 	s.Films[film.Id] = film
 	return film.Id, ""
 }
