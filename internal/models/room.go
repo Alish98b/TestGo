@@ -2,7 +2,7 @@ package models
 
 import "time"
 
-//new model
+//new model film
 type Film struct {
 	Id          int       `json:"id"`
 	Description string    `json:"description"`
