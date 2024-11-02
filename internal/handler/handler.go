@@ -31,6 +31,6 @@ func (h *Handler) InitRoutes() *gin.Engine {
 		movie.GET("/", h.GetAllMovies)
 		movie.DELETE("/:id", h.DeleteMovie)
 	}
-
+	//
 	return router
 }
