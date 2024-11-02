@@ -7,10 +7,10 @@ import (
 )
 
 type Handler struct {
-	services *services.Service
+	services *services.ServicesCinema
 }
 
-func NewHandler(srv *services.Service) *Handler {
+func NewHandler(srv *services.ServicesCinema) *Handler {
 	return &Handler{
 		services: srv,
 	}
@@ -23,13 +23,13 @@ func (h *Handler) InitRoutes() *gin.Engine {
 	router.Use(gin.Logger())
 	router.Use(gin.Recovery())
 
-	room := router.Group("/film")
+	movie := router.Group("/movie")
 	{
-		room.GET("/:id", h.GetFilmById)
-		room.POST("/", h.CreateFilm)
-		room.PUT("/:id", h.UpdateFilm)
-		room.GET("/", h.GetAllFilms)
-		room.DELETE("/:id", h.DeleteFilm)
+		movie.GET("/:id", h.GetMovieById)
+		movie.POST("/", h.CreateMovie)
+		movie.PUT("/:id", h.UpdateMovie)
+		movie.GET("/", h.GetAllMovies)
+		movie.DELETE("/:id", h.DeleteMovie)
 	}
 
 	return router

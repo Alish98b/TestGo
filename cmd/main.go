@@ -12,8 +12,15 @@ import (
 func main() {
 	logrus.SetFormatter(new(logrus.JSONFormatter))
 
-	storage := repositories.NewStorage()
-	service := services.NewServices(storage)
+	url := "postgresql://cinema_6i7q_user:URS5LXBh4NDZNJUAbSgwJQkZpKKuANxv@dpg-csebeddsvqrc73evunbg-a.frankfurt-postgres.render.com/cinema_6i7q"
+	db, err := repositories.NewPostgresDB(url)
+	if err != nil {
+		logrus.Fatal("Error from db: ", err)
+		return
+	}
+
+	repository := repositories.CinemaRepo(db)
+	service := services.NewServicesCinema(repository)
 	handler := handler.NewHandler(service)
 
 	server := &http.Server{
@@ -26,5 +33,4 @@ func main() {
 	if err := server.ListenAndServe(); err != nil {
 		logrus.Fatal(err)
 	}
-
 }
