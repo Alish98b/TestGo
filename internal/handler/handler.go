@@ -23,7 +23,7 @@ func (h *Handler) InitRoutes() *gin.Engine {
 	router.Use(gin.Logger())
 	router.Use(gin.Recovery())
 
-	movie := router.Group("/movie")
+	movie := router.Group("/movie", h.userIdentity)
 	{
 		movie.GET("/:id", h.GetMovieById)
 		movie.POST("/", h.CreateMovie)
@@ -39,6 +39,8 @@ func (h *Handler) InitRoutes() *gin.Engine {
 		user.PUT("/:id", h.UpdateUser)
 		user.GET("/", h.GetAllUsers)
 		user.DELETE("/:id", h.DeleteUser)
+		user.POST("/login", h.Login)
+		//TODO: сделать метод который будет запрашивать пользователя по email
 	}
 
 	//

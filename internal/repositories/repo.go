@@ -15,13 +15,12 @@ type Cinema interface {
 }
 
 type User interface {
-	GetUserById(id int) (interface{}, error)
+	GetUserById(id int) (models.User, error)
 	CreateUser(user models.UserCreate) (int, error)
 	DeleteUser(id int) error
 	UpdateUser(id int, user models.UserCreate) error
 	GetAllUsers() (interface{}, error)
 }
-
 
 type Repo struct {
 	Cinema
@@ -31,6 +30,6 @@ type Repo struct {
 func CinemaRepo(db *sqlx.DB) *Repo {
 	return &Repo{
 		Cinema: NewCinemaDB(db),
-		User: NewUserDB(db),
+		User:   NewUserDB(db),
 	}
 }

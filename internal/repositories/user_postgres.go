@@ -16,7 +16,7 @@ func NewUserDB(db *sqlx.DB) *UserDB {
 	return &UserDB{db: db}
 }
 
-func (c *UserDB) GetUserById(id int) (interface{}, error) {
+func (c *UserDB) GetUserById(id int) (models.User, error) {
 	var user models.User
 	query := `SELECT id, name, password, email FROM users WHERE id=$1`
 

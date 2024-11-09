@@ -24,6 +24,32 @@ func (h *Handler) GetUserById(c *gin.Context) {
 	c.JSON(http.StatusOK, user)
 }
 
+func (h *Handler) Login(c *gin.Context) {
+	var input models.UserLogin
+	if err := c.BindJSON(&input); err != nil {
+		newErrorResponse(c, http.StatusBadRequest, err.Error())
+		return
+	}
+	//TODO - заправшивать по логину пользователя и проверять существует пользователь или нет
+	id := 3 //потом уберешь!!!
+	accessToken, err := h.services.GenerateToken(id)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	refreshToken, err := h.services.GenerateRefreshToken(id) //тоже хард код уберешь!
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	c.JSON(http.StatusOK, map[string]interface{}{
+		"accessToken":  accessToken,
+		"refreshToken": refreshToken,
+	})
+}
+
 func (h *Handler) CreateUser(c *gin.Context) {
 	var input models.UserCreate
 

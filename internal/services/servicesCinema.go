@@ -19,6 +19,9 @@ type User interface {
 	DeleteUser(id int) error
 	UpdateUser(id int, user models.UserCreate) error
 	GetAllUsers() (interface{}, error)
+	GenerateToken(id int) (string, error)
+	GenerateRefreshToken(id int) (string, error)
+	ParseToken(accessToken string) (string, error)
 }
 
 type ServicesCinema struct {
