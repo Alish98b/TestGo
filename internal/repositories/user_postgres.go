@@ -12,7 +12,7 @@ type UserDB struct {
 	db *sqlx.DB
 }
 
-func NewuserDB(db *sqlx.DB) *UserDB {
+func NewUserDB(db *sqlx.DB) *UserDB {
 	return &UserDB{db: db}
 }
 

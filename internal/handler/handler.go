@@ -40,6 +40,7 @@ func (h *Handler) InitRoutes() *gin.Engine {
 		user.GET("/", h.GetAllUsers)
 		user.DELETE("/:id", h.DeleteUser)
 	}
+
 	//
 	return router
 }

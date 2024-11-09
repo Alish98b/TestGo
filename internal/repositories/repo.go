@@ -31,6 +31,6 @@ type Repo struct {
 func CinemaRepo(db *sqlx.DB) *Repo {
 	return &Repo{
 		Cinema: NewCinemaDB(db),
-		User: NewuserDB(db),
+		User: NewUserDB(db),
 	}
 }

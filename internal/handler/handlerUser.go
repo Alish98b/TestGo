@@ -15,13 +15,13 @@ func (h *Handler) GetUserById(c *gin.Context) {
 		return
 	}
 
-	movie, err := h.services.GetUserById(id)
+	user, err := h.services.GetUserById(id)
 	if err != nil {
 		newErrorResponse(c, http.StatusInternalServerError, err.Error())
 		return
 	}
 
-	c.JSON(http.StatusOK, movie)
+	c.JSON(http.StatusOK, user)
 }
 
 func (h *Handler) CreateUser(c *gin.Context) {

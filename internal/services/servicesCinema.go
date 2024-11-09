@@ -26,12 +26,9 @@ type ServicesCinema struct {
 	User
 }
 
-
-
-
 func NewServicesCinema(repo *repositories.Repo) *ServicesCinema {
 	return &ServicesCinema{
 		Movie: NewMovieService(repo),
-		User: NewUserService(repo),
+		User:  NewUserService(repo),
 	}
 }
