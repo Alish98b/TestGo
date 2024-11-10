@@ -5,7 +5,7 @@ import (
 	"hotel/internal/repositories"
 	"hotel/internal/services"
 	"net/http"
-
+	_ "github.com/lib/pq"
 	"github.com/sirupsen/logrus"
 )
 
