@@ -15,7 +15,7 @@ import (
 func main() {
 	logrus.SetFormatter(new(logrus.JSONFormatter))
 
-	cfg, err := config.InitConfig("../config.yaml")
+	cfg, err := config.InitConfig("../config.yml")
 	if err != nil {
 		panic(err)
 	}

@@ -18,7 +18,7 @@ type Config struct {
 func InitConfig(path string) (*Config, error) {
 	config := new(Config)
 
-	if err := cleanenv.ReadConfig(path, &config); err != nil {
+	if err := cleanenv.ReadConfig(path, config); err != nil {
 		log.Fatalf("Error loading config: %v", err)
 		return nil, err
 	}
