@@ -13,12 +13,22 @@ type Movie interface {
 	GetAllMovies() (interface{}, error)
 }
 
+type Genre interface {
+	CreateGenre(genre models.GenreCreate) (int, error)
+	GetGenreById(id int) (models.Genre, error)
+	GetAllGenres() ([]models.Genre, error)
+	UpdateGenre(id int, genre models.GenreCreate) error
+	DeleteGenre(id int) error
+}
+
 type ServicesCinema struct {
 	Movie
+	Genre
 }
 
 func NewServicesCinema(repo *repositories.Repo) *ServicesCinema {
 	return &ServicesCinema{
 		Movie: NewMovieService(repo),
+		Genre: NewGenreService(repo),
 	}
 }

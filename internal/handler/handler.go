@@ -31,6 +31,16 @@ func (h *Handler) InitRoutes() *gin.Engine {
 		movie.GET("/", h.GetAllMovies)
 		movie.DELETE("/:id", h.DeleteMovie)
 	}
+
+	genre := router.Group("/genre")
+    {
+        genre.POST("/", h.CreateGenre)
+        genre.GET("/:id", h.GetGenreById)
+        genre.GET("/", h.GetAllGenres)
+        genre.PUT("/:id", h.UpdateGenre)
+        genre.DELETE("/:id", h.DeleteGenre)
+    }
+
 	//
 	return router
 }

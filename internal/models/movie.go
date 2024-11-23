@@ -11,15 +11,11 @@ type Movie struct {
 	Genres      []Genre   `db:"-"`
 }
 
-type Genre struct {
-	ID     uint    `db:"id"`
-	Name   string  `db:"name"`
-	Movies []Movie `db:"-"`
-}
-
 type MovieCreate struct {
 	Title       string
 	Description string
 	ReleaseDate time.Time
 	Duration    int
+	GenreIDs    []int // Список ID жанров
 }
+
