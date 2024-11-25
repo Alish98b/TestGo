@@ -33,13 +33,20 @@ func (h *Handler) InitRoutes() *gin.Engine {
 	}
 
 	genre := router.Group("/genre")
-    {
-        genre.POST("/", h.CreateGenre)
-        genre.GET("/:id", h.GetGenreById)
-        genre.GET("/", h.GetAllGenres)
-        genre.PUT("/:id", h.UpdateGenre)
-        genre.DELETE("/:id", h.DeleteGenre)
-    }
+	{
+		genre.POST("/", h.CreateGenre)
+		genre.GET("/:id", h.GetGenreById)
+		genre.GET("/", h.GetAllGenres)
+		genre.PUT("/:id", h.UpdateGenre)
+		genre.DELETE("/:id", h.DeleteGenre)
+	}
+
+	tickets := router.Group("/tickets")
+	tickets.POST("/", h.CreateTicket)
+	tickets.GET("/:id", h.GetTicketById)
+	tickets.GET("/", h.GetAllTickets)
+	tickets.PUT("/:id", h.UpdateTicket)
+	tickets.DELETE("/:id", h.DeleteTicket)
 
 	//
 	return router

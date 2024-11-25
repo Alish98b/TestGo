@@ -21,14 +21,24 @@ type Genre interface {
 	DeleteGenre(id int) error
 }
 
+type Ticket interface {
+	CreateTicket(ticket models.TicketCreate) (int, error)
+	GetTicketById(id int) (models.Ticket, error)
+	GetAllTickets() ([]models.Ticket, error)
+	UpdateTicket(id int, ticket models.TicketCreate) error
+	DeleteTicket(id int) error
+}
+
 type ServicesCinema struct {
 	Movie
 	Genre
+	Ticket
 }
 
 func NewServicesCinema(repo *repositories.Repo) *ServicesCinema {
 	return &ServicesCinema{
-		Movie: NewMovieService(repo),
-		Genre: NewGenreService(repo),
+		Movie:  NewMovieService(repo),
+		Genre:  NewGenreService(repo),
+		Ticket: NewTicketService(repo),
 	}
 }
