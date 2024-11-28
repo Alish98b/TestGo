@@ -1,7 +1,6 @@
 package services
 
 import (
-	"fmt"
 	"hotel/internal/models"
 	"hotel/internal/repositories"
 )
@@ -15,10 +14,10 @@ func NewGenreService(repo *repositories.Repo) *GenreService {
 }
 
 func (s *GenreService) CreateGenre(genre models.GenreCreate) (int, error) {
-	err := fmt.Errorf("Name %s", "is required")
-	if genre.Name == nil {
-		return 0, err
-	}
+	// err := fmt.Errorf("Name %s", "is required")
+	// if genre.Name == nil {
+	// 	return 0, err
+	// }
 	return s.repo.Genre.CreateGenre(genre)
 }
 
