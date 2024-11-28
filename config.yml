@@ -1,4 +1,4 @@
 server:
   port: "5050"
 database:
-  url: "postgresql://cinema_6i7q_user:URS5LXBh4NDZNJUAbSgwJQkZpKKuANxv@dpg-csebeddsvqrc73evunbg-a.frankfurt-postgres.render.com/cinema_6i7q"
+  url: "postgresql://cinema2_user:R8k3fhn7mkeLItCvFPOWLOvv39GgRMjl@dpg-ct496gqj1k6c73ef5jm0-a.frankfurt-postgres.render.com/cinema2"
