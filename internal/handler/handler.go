@@ -24,6 +24,7 @@ func (h *Handler) InitRoutes() *gin.Engine {
 	router.Use(gin.Recovery())
 
 	movie := router.Group("/movie")
+
 	{
 		movie.GET("/:id", h.GetMovieById)
 		movie.POST("/", h.CreateMovie)
@@ -42,12 +43,14 @@ func (h *Handler) InitRoutes() *gin.Engine {
 	}
 
 	tickets := router.Group("/tickets")
-	tickets.POST("/", h.CreateTicket)
-	tickets.GET("/:id", h.GetTicketById)
-	tickets.GET("/", h.GetAllTickets)
-	tickets.PUT("/:id", h.UpdateTicket)
-	tickets.DELETE("/:id", h.DeleteTicket)
 
+	{
+		tickets.POST("/", h.CreateTicket)
+		tickets.GET("/:id", h.GetTicketById)
+		tickets.GET("/", h.GetAllTickets)
+		tickets.PUT("/:id", h.UpdateTicket)
+		tickets.DELETE("/:id", h.DeleteTicket)
+	}
 	//
 	return router
 }
