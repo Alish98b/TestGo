@@ -14,12 +14,31 @@ type Cinema interface {
 	GetAllMovies() (interface{}, error)
 }
 
+type Hall interface {
+	GetHallById(id int) (models.Hall, error)
+	CreateHall(hall models.HallCreate) (int, error)
+	GetAllHalls() interface{}
+	DeleteHall(id int) error
+	UpdateHall(id int, hall models.Hall) error
+}
+
+type Session interface {
+	GetSessionById(id int) (models.Session, error)
+	CreateSession(session models.SessionCreate) (int, error)
+	DeleteSession(id int) error
+	UpdateSession(id int, session models.Session) error
+	GetAllSessions() (models.Session, error)
+}
 type Repo struct {
 	Cinema
+	Hall
+	Session
 }
 
 func CinemaRepo(db *sqlx.DB) *Repo {
 	return &Repo{
-		Cinema: NewCinemaDB(db),
+		Cinema:  NewCinemaDB(db),
+		Hall:    NewHallPostgres(db),
+		Session: NewSessionPostgres(db),
 	}
 }

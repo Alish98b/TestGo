@@ -31,6 +31,23 @@ func (h *Handler) InitRoutes() *gin.Engine {
 		movie.GET("/", h.GetAllMovies)
 		movie.DELETE("/:id", h.DeleteMovie)
 	}
+	hall := router.Group("/hall")
+	{
+		hall.POST("/", h.CreateHall)
+		hall.GET("/:id", h.GetHallById)
+		hall.GET("/", h.GetAllHalls)
+		hall.PUT("/:id", h.UpdateHall)
+		hall.DELETE("/:id", h.DeleteHall)
+
+	}
+	session := router.Group("/session")
+	{
+		session.POST("/", h.CreateSession)
+		session.GET("/:id", h.GetSessionById)
+		session.GET("/", h.GetAllSessions)
+		session.PUT("/:id", h.UpdateSession)
+		session.DELETE("/:id", h.DeleteSession)
+	}
 	//
 	return router
 }

@@ -1,0 +1,16 @@
+2024-11-23T06:21:46.808Z [ctureModificationListener$Companion.initForProject] INFO ProjectStructureModificationListener is init for project TestGo3
+2024-11-23T06:21:46.813Z [s.AiToolwindowsInitializer.reinitializeToolWindows] INFO AI state ENABLED
+2024-11-23T06:21:46.854Z [nfrastructureApiService.createInfrastructureFacade] INFO isInfrastructureDebug: false
+2024-11-23T06:21:46.855Z [nfrastructureApiService.createInfrastructureFacade] INFO Use port: 58615
+2024-11-23T06:21:46.865Z [.services.HeavyInfrastructureApiService.initialize] INFO Plugin context initialized
+2024-11-23T06:21:46.866Z [itializeManager$initializeAnalyzer$1.invokeSuspend] INFO initializing infrastructure
+2024-11-23T06:21:48.484Z [initializeInfrastructureInstance$1$1.invokeSuspend] INFO Infrastructure initialized
+2024-11-23T06:21:48.890Z [y.aiintellij.utils.logging.AiProjectLogger.cleanUp] INFO Clean up logs files was started
+2024-11-23T06:21:48.893Z [y.aiintellij.utils.logging.AiProjectLogger.cleanUp] INFO Clean up logs files was finished
+2024-11-23T06:21:55.294Z [y.aiintellij.ui.panels.AIToolWindowLogPanel.<init>] INFO initializing a logs panel
+2024-11-23T06:21:55.343Z [y.aiintellij.ui.panels.AIToolWindowLogPanel.<init>] INFO initializing a logs panel
+2024-11-23T06:21:55.964Z [sistantNotificationService.onAssistantNotification] INFO TipsAvailabilityChanged notification is received by assistant
+2024-11-23T06:21:55.968Z [sistantNotificationService.onAssistantNotification] INFO QuickFixTipsUpdated notification is received by assistant
+2024-11-23T06:21:56.142Z [sistantNotificationService.onAssistantNotification] INFO TipsAvailabilityChanged notification is received by assistant
+2024-11-23T06:21:56.144Z [sistantNotificationService.onAssistantNotification] INFO QuickFixTipsUpdated notification is received by assistant
+2024-11-23T06:21:56.155Z [ices.aie.AieInitializer$initialize$1.invokeSuspend] INFO AIE integration isn't initialized, skipping listeners initialization
