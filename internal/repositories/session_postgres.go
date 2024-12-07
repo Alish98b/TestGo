@@ -48,7 +48,7 @@ func (r *SessionPostgres) GetSessionById(id int) (models.Session, error) {
 
 func (r *SessionPostgres) CreateSession(session models.SessionCreate) (int, error) {
 	var id int
-	query := fmt.Sprintf("INSERT INTO %s (MovieID, HallID, StartTime) VALUES ($1, $2, $3) RETURNING id", "Session")
+	query := fmt.Sprintf("INSERT INTO %s ( Movie_ID, Hall_ID, Start_Time) VALUES ($1, $2, $3)  RETURNING id", "Session")
 	row := r.db.QueryRow(query, session.MovieID, session.HallID, session.StartTime)
 	if err := row.Scan(&id); err != nil {
 		return 0, err
@@ -83,7 +83,7 @@ func (r *SessionPostgres) DeleteSession(id int) (int error) {
 }
 
 func (r *SessionPostgres) UpdateSession(id int, session models.Session) error {
-	query := `UPDATE hall SET start_time=$1  WHERE id=$2`
+	query := `UPDATE session SET start_time=$1  WHERE id=$2`
 
 	_, err := r.db.Exec(query, session.StartTime, id)
 	if err != nil {

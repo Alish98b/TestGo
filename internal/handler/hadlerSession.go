@@ -8,10 +8,9 @@ import (
 )
 
 func (h *Handler) GetSessionById(c *gin.Context) {
-
 	id, err := strconv.Atoi(c.Param("id"))
-	if err != nil {
-		newErrorResponse(c, http.StatusBadRequest, "id param is not correct")
+	if err != nil || id <= 0 {
+		newErrorResponse(c, http.StatusBadRequest, "id parameter is required and must be a positive integer")
 		return
 	}
 
@@ -23,12 +22,25 @@ func (h *Handler) GetSessionById(c *gin.Context) {
 
 	c.JSON(http.StatusOK, session)
 }
-
 func (h *Handler) CreateSession(c *gin.Context) {
 	var input models.SessionCreate
 
 	if err := c.BindJSON(&input); err != nil {
-		newErrorResponse(c, http.StatusBadRequest, err.Error())
+		newErrorResponse(c, http.StatusBadRequest, "Invalid JSON format")
+		return
+	}
+
+	// Add field-specific validations
+	if input.MovieID == 0 {
+		newErrorResponse(c, http.StatusBadRequest, "Field 'MovieID' is required and must be greater than 0")
+		return
+	}
+	if input.HallID == 0 {
+		newErrorResponse(c, http.StatusBadRequest, "Field 'HallID' is required and must be greater than 0")
+		return
+	}
+	if input.StartTime.IsZero() {
+		newErrorResponse(c, http.StatusBadRequest, "Field 'StartTime' is required and must be a valid date")
 		return
 	}
 
@@ -43,9 +55,33 @@ func (h *Handler) CreateSession(c *gin.Context) {
 	})
 }
 
+//func (h *Handler) CreateSession(c *gin.Context) {
+//	var input models.SessionCreate
+//
+//	if err := c.BindJSON(&input); err != nil {
+//		newErrorResponse(c, http.StatusBadRequest, err.Error())
+//		return
+//	}
+//
+//	id, err := h.services.CreateSession(input)
+//	if err != nil {
+//		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+//		return
+//	}
+//
+//	c.JSON(http.StatusOK, map[string]interface{}{
+//		"id": id,
+//	})
+//}
+
 func (h *Handler) GetAllSessions(c *gin.Context) {
-	session, _ := h.services.GetAllSessions()
-	c.JSON(http.StatusOK, session)
+	// No specific validations needed for fetching all sessions
+	sessions, err := h.services.GetAllSessions()
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+	c.JSON(http.StatusOK, sessions)
 }
 
 func (h *Handler) DeleteSession(c *gin.Context) {

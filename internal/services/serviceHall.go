@@ -32,3 +32,15 @@ func (s *HallService) UpdateHall(id int, hall models.Hall) error {
 func (s *HallService) GetAllHalls() interface{} {
 	return s.repo.GetAllHalls()
 }
+
+//func (s *HallService) GetHallByName(name string) (*models.Hall, error) {
+//	var hall models.Hall
+//	err := s.db.Where("name = ?", name).First(&hall).Error
+//	if err != nil {
+//		if errors.Is(err, gorm.ErrRecordNotFound) {
+//			return nil, nil // Зал с таким именем не найден
+//		}
+//		return nil, err // Другая ошибка
+//	}
+//	return &hall, nil
+//}
