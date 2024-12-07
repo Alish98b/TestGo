@@ -1,0 +1,19 @@
+2024-11-30T04:22:49.912Z [ctureModificationListener$Companion.initForProject] INFO ProjectStructureModificationListener is init for project TestGo3
+2024-11-30T04:22:49.921Z [s.AiToolwindowsInitializer.reinitializeToolWindows] INFO AI state ENABLED
+2024-11-30T04:22:50.033Z [nfrastructureApiService.createInfrastructureFacade] INFO isInfrastructureDebug: false
+2024-11-30T04:22:50.036Z [nfrastructureApiService.createInfrastructureFacade] INFO Use port: 51098
+2024-11-30T04:22:50.054Z [.services.HeavyInfrastructureApiService.initialize] INFO Plugin context initialized
+2024-11-30T04:22:50.055Z [itializeManager$initializeAnalyzer$1.invokeSuspend] INFO initializing infrastructure
+2024-11-30T04:22:50.062Z [y.aiintellij.ui.panels.AIToolWindowLogPanel.<init>] INFO initializing a logs panel
+2024-11-30T04:22:50.227Z [y.aiintellij.ui.panels.AIToolWindowLogPanel.<init>] INFO initializing a logs panel
+2024-11-30T04:22:51.079Z [intellij.services.AiInitializeManager.initializeAI] INFO IntelliJ listens web server on port: 63342
+2024-11-30T04:22:54.035Z [initializeInfrastructureInstance$1$1.invokeSuspend] INFO Infrastructure initialized
+2024-11-30T04:22:54.624Z [y.aiintellij.utils.logging.AiProjectLogger.cleanUp] INFO Clean up logs files was started
+2024-11-30T04:22:54.630Z [y.aiintellij.utils.logging.AiProjectLogger.cleanUp] INFO Clean up logs files was finished
+2024-11-30T04:22:56.981Z [sistantNotificationService.onAssistantNotification] INFO TipsAvailabilityChanged notification is received by assistant
+2024-11-30T04:22:56.985Z [sistantNotificationService.onAssistantNotification] INFO QuickFixTipsUpdated notification is received by assistant
+2024-11-30T04:22:57.117Z [sistantNotificationService.onAssistantNotification] INFO TipsAvailabilityChanged notification is received by assistant
+2024-11-30T04:22:57.119Z [sistantNotificationService.onAssistantNotification] INFO QuickFixTipsUpdated notification is received by assistant
+2024-11-30T04:22:57.119Z [els.AIToolWindowLogPanel.reloadAdditionalLogPanels] INFO reloading additional log panels
+2024-11-30T04:22:57.119Z [els.AIToolWindowLogPanel.reloadAdditionalLogPanels] INFO not in developer mode, skipping
+2024-11-30T04:22:57.128Z [ices.aie.AieInitializer$initialize$1.invokeSuspend] INFO AIE integration isn't initialized, skipping listeners initialization

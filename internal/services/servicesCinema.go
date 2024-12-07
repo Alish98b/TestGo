@@ -12,7 +12,21 @@ type Movie interface {
 	UpdateMovie(id int, movie models.MovieCreate) error
 	GetAllMovies() (interface{}, error)
 }
+type Hall interface {
+	GetHallById(id int) (models.Hall, error)
+	CreateHall(hall models.HallCreate) (int, error)
+	GetAllHalls() interface{}
+	DeleteHall(id int) (int error)
+	UpdateHall(id int, hall models.Hall) error
+}
 
+type Session interface {
+	GetSessionById(id int) (models.Session, error)
+	CreateSession(session models.SessionCreate) (int, error)
+	DeleteSession(id int) error
+	UpdateSession(id int, session models.Session) error
+	GetAllSessions() (models.Session, error)
+}
 type Genre interface {
 	CreateGenre(genre models.GenreCreate) (int, error)
 	GetGenreById(id int) (models.Genre, error)
@@ -20,15 +34,18 @@ type Genre interface {
 	UpdateGenre(id int, genre models.GenreCreate) error
 	DeleteGenre(id int) error
 }
-
 type ServicesCinema struct {
 	Movie
+	Hall
+	Session
 	Genre
 }
 
 func NewServicesCinema(repo *repositories.Repo) *ServicesCinema {
 	return &ServicesCinema{
-		Movie: NewMovieService(repo),
-		Genre: NewGenreService(repo),
+		Movie:   NewMovieService(repo),
+		Hall:    NewHallService(repo),
+		Session: NewSessionService(repo),
+		Genre:   NewGenreService(repo),
 	}
 }
