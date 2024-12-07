@@ -27,11 +27,18 @@ type Session interface {
 	UpdateSession(id int, session models.Session) error
 	GetAllSessions() (models.Session, error)
 }
-
+type Genre interface {
+	CreateGenre(genre models.GenreCreate) (int, error)
+	GetGenreById(id int) (models.Genre, error)
+	GetAllGenres() ([]models.Genre, error)
+	UpdateGenre(id int, genre models.GenreCreate) error
+	DeleteGenre(id int) error
+}
 type ServicesCinema struct {
 	Movie
 	Hall
 	Session
+	Genre
 }
 
 func NewServicesCinema(repo *repositories.Repo) *ServicesCinema {
@@ -39,5 +46,6 @@ func NewServicesCinema(repo *repositories.Repo) *ServicesCinema {
 		Movie:   NewMovieService(repo),
 		Hall:    NewHallService(repo),
 		Session: NewSessionService(repo),
+		Genre:   NewGenreService(repo),
 	}
 }

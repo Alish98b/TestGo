@@ -48,6 +48,14 @@ func (h *Handler) InitRoutes() *gin.Engine {
 		session.PUT("/:id", h.UpdateSession)
 		session.DELETE("/:id", h.DeleteSession)
 	}
+	genre := router.Group("/genre")
+	{
+		genre.POST("/", h.CreateGenre)
+		genre.GET("/:id", h.GetGenreById)
+		genre.GET("/", h.GetAllGenres)
+		genre.PUT("/:id", h.UpdateGenre)
+		genre.DELETE("/:id", h.DeleteGenre)
+	}
 	//
 	return router
 }

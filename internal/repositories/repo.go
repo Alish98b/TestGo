@@ -6,6 +6,13 @@ import (
 	"github.com/jmoiron/sqlx"
 )
 
+type Genre interface {
+	CreateGenre(genre models.GenreCreate) (int, error)
+	GetGenreById(id int) (models.Genre, error)
+	GetAllGenres() ([]models.Genre, error)
+	UpdateGenre(id int, genre models.GenreCreate) error
+	DeleteGenre(id int) error
+}
 type Cinema interface {
 	GetMovieById(id int) (interface{}, error)
 	CreateMovie(movie models.MovieCreate) (int, error)
@@ -33,6 +40,7 @@ type Repo struct {
 	Cinema
 	Hall
 	Session
+	Genre
 }
 
 func CinemaRepo(db *sqlx.DB) *Repo {
@@ -40,5 +48,6 @@ func CinemaRepo(db *sqlx.DB) *Repo {
 		Cinema:  NewCinemaDB(db),
 		Hall:    NewHallPostgres(db),
 		Session: NewSessionPostgres(db),
+		Genre:   NewGenreDB(db),
 	}
 }
